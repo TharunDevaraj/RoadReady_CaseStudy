@@ -1,0 +1,113 @@
+<!-- Full-page Flex Layout -->
+<div class="d-flex flex-column min-vh-100">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-sm navbar-dark bg-success " >
+    <div class="container-fluid">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="assets\logo.jpg" alt="Logo" width="40" height="40" class="mr-2 rounded-circle border border-dark">
+        <span class="">RoadReady</span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav ms-auto text-end">
+          <li class="nav-item" *ngIf="!isLoggedIn()"><a class="nav-link fw-semibold" routerLink="/login">Login</a></li>
+          <li class="nav-item" *ngIf="!isLoggedIn()"><a class="nav-link fw-semibold" routerLink="/register">Register</a></li>
+          <li class="nav-item"><a class="nav-link fw-semibold" routerLink="/about">About Us</a></li>
+          <li class="nav-item"><a class="nav-link fw-semibold" routerLink="/contact">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Content Wrapper -->
+  <div class="d-flex flex-grow-1" style="background: linear-gradient(135deg, #f8f9fa, #e9f7ef);">
+
+    <!-- Sidebar -->
+    <div *ngIf="isLoggedIn()" class="bg-dark text-white p-3 vh-100 shadow" style="width: 220px; position: fixed;">
+      <h5 class="text-success mb-4">Quick Menu</h5>
+      <ul class="nav flex-column">
+
+        <!-- Dashboard -->
+        <li class="nav-item mb-2">
+          <a class="nav-link text-white" routerLink="/welcome"><i class="bi bi-house-door-fill mr-2"></i>Dashboard</a>
+        </li>
+
+        <!-- Admin Only -->
+        <li class="nav-item mb-2" *ngIf="authService.isAdmin()">
+          <a class="nav-link text-white" routerLink="/addCar"><i class="bi bi-plus-circle mr-2"></i>Add Car</a>
+        </li>
+
+        <!-- Common (Admin, Agent, Customer) -->
+        <li class="nav-item mb-2">
+          <a class="nav-link text-white" routerLink="/showCars"><i class="bi bi-car-front mr-2"></i>View Cars</a>
+        </li>
+
+        <li class="nav-item mb-2" *ngIf="authService.isAdmin()">
+          <a class="nav-link text-white" routerLink="/viewUsers"><i class="bi bi-people mr-2"></i>View Users</a>
+        </li>
+        <li class="nav-item mb-2" *ngIf="authService.isAdmin()">
+          <a class="nav-link text-white" routerLink="/report"><i class="bi bi-bar-chart-line mr-2"></i>View Reports</a>
+        </li>
+        <li class="nav-item mb-2" *ngIf="authService.isAdmin()">
+          <a class="nav-link text-white" routerLink="/viewFeedbacks"><i class="bi bi-chat-left-text mr-2"></i>View Feedbacks</a>
+        </li>
+
+        <!-- Agent Only -->
+        <li class="nav-item mb-2" *ngIf="authService.isAgent()">
+          <a class="nav-link text-white" routerLink="/check"><i class="bi bi-check2-square mr-2"></i>Check-In/Out</a>
+        </li>
+
+        
+
+        <!-- Customer Only -->
+        <li class="nav-item mb-2" *ngIf="!authService.isAdmin() && !authService.isAgent()">
+          <a class="nav-link text-white" routerLink="/history"><i class="bi bi-clock-history mr-2"></i>My Bookings</a>
+        </li>
+        <li class="nav-item mb-2" *ngIf="!authService.isAdmin() && !authService.isAgent()">
+          <a class="nav-link text-white" routerLink="/myFeedback"><i class="bi bi-chat-dots mr-2"></i>My Feedback</a>
+        </li>
+
+        <!-- Common: Profile & Logout -->
+        <li class="nav-item mb-2">
+          <a class="nav-link text-white" routerLink="/profile"><i class="bi bi-person mr-2"></i>Profile</a>
+        </li>
+
+        <li class="nav-item mt-3">
+          <a class="nav-link text-danger fw-bold pointer" (click)="authService.logOut()">
+            <i class="bi bi-box-arrow-right mr-2"></i>Logout
+          </a>
+        </li>
+      </ul>
+    </div>
+
+
+
+    <!-- Main Content -->
+    <div [ngStyle]="{ 'margin-left.px': isLoggedIn() ? 220 : 0 }" class="p-4 w-100">
+
+      <!-- Welcome Section -->
+      <div class="container text-center mt-5" style="padding: 120px;" *ngIf="router.url==='/'">
+        <h1 class="display-5 fw-bold text-success">Welcome to RoadReady Car Rentals!</h1>
+        <p class="lead text-secondary">Book your ride with ease. Fast, secure, and reliable car rental services.</p>
+        <p class="lead mt-4 text-muted">Are you new? Register below</p>
+        <a routerLink="/register" class="btn btn-lg btn-outline-success">Register</a>
+      </div>
+
+      <!-- Routed Page -->
+      <div class="card shadow p-4" *ngIf="router.url!=='/'">
+        <router-outlet></router-outlet>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="text-center py-3 bg-light text-muted small border-top shadow-sm">
+    &copy; {{ currentYear }} RoadReady Car Rental System. All rights reserved.
+  </footer>
+</div>

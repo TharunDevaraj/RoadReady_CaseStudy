@@ -1,0 +1,9 @@
+.border-start-5 {
+  border-left: 5px solid;
+}
+.border-start-danger {
+  border-color: #dc3545 !important; /* Bootstrap red */
+}
+.border-start-success {
+  border-color: #198754 !important; /* Bootstrap green */
+}

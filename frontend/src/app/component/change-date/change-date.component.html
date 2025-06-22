@@ -1,0 +1,43 @@
+<div class="container col-md-6 mt-5">
+  <h3 class="mb-4">Update Reservation Dates</h3>
+  <form #changeForm="ngForm" (ngSubmit)="submitChange()" class="border p-4 shadow bg-light rounded">
+
+    <div class="form-group mb-3">
+      <label>Reservation ID:</label>
+      <input type="text" class="form-control" [value]="reservationId" readonly>
+    </div>
+
+    <div class="form-group mb-3">
+      <label>Car ID:</label>
+      <input type="text" class="form-control" [value]="carId" readonly>
+    </div>
+
+    <div class="form-group mb-3">
+      <label>Customer ID:</label>
+      <input type="text" class="form-control" [value]="customerId" readonly>
+    </div>
+
+    <p *ngIf="newGap !== originalDayGap" class="text-danger">Please maintain the same rental duration of {{originalDayGap}} day(s).</p>
+    <div class="form-group mb-3">
+      <label>New Start Date:</label>
+      <input type="date" class="form-control" name="startDate"
+             [(ngModel)]="startDate" [min]="minStartDate" (change)="calculateDays()" required>
+    </div>
+
+    <div class="form-group mb-3">
+      <label>New End Date:</label>
+      <input type="date" class="form-control" name="endDate"
+             [(ngModel)]="endDate" [min]="startDate" (change)="calculateDays()" required>
+    </div>
+
+    <p class="text-danger">*Both dates must be filled.</p>
+
+    <div class="d-flex justify-content-between">
+      <button type="button" class="btn btn-secondary" (click)="goBack()">Back</button>
+      <button type="submit" class="btn btn-primary" [disabled]="!startDate || !endDate">
+        Change Date
+      </button>
+    </div>
+
+  </form>
+</div>

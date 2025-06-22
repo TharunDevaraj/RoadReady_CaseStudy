@@ -1,0 +1,141 @@
+<div class="container mt-2">
+  <h2 class="text-success mb-4">Welcome, {{authService.getUsernameFromToken()}}!</h2>
+
+  <!-- Admin Dashboard -->
+<div *ngIf="isAdmin" class="row g-4 justify-content-center">
+
+  <!-- Add Car -->
+  <div class="col-md-4">
+    <div class="card shadow h-100 text-center">
+      <div class="card-body">
+        <i class="bi bi-plus-circle-fill text-success fs-2 mb-2"></i>
+        <h5 class="card-title">Add New Car</h5>
+        <p class="text-muted small">Add a new car to your rental fleet.</p>
+        <button class="btn btn-outline-success mt-2 w-100" routerLink="/addCar">Add</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- View Cars -->
+  <div class="col-md-4">
+    <div class="card shadow h-100 text-center">
+      <div class="card-body">
+        <i class="bi bi-car-front-fill text-primary fs-2 mb-2"></i>
+        <h5 class="card-title">View All Cars</h5>
+        <p class="text-muted small">Manage available cars and update their details.</p>
+        <button class="btn btn-outline-primary mt-2 w-100" routerLink="/showCars">View Cars</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Manage Users -->
+  <div class="col-md-4">
+    <div class="card shadow h-100 text-center">
+      <div class="card-body">
+        <i class="bi bi-people-fill text-warning fs-2 mb-2"></i>
+        <h5 class="card-title">Manage Users</h5>
+        <p class="text-muted small">View, activate, or deactivate user accounts.</p>
+        <button class="btn btn-outline-warning mt-2 w-100" routerLink="/viewUsers">Manage Users</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reports -->
+  <div class="col-md-4 mt-3">
+    <div class="card shadow h-100 text-center">
+      <div class="card-body">
+        <i class="bi bi-bar-chart-fill text-info fs-2 mb-2"></i>
+        <h5 class="card-title">Reports</h5>
+        <p class="text-muted small">View analytics and generate reports on reservations and payments.</p>
+        <button class="btn btn-outline-info mt-2 w-100" routerLink="/report">View Reports</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- View Feedbacks -->
+  <div class="col-md-4 mt-3">
+    <div class="card shadow h-100 text-center">
+      <div class="card-body">
+        <i class="bi bi-chat-left-text-fill text-danger fs-2 mb-2"></i>
+        <h5 class="card-title">View User Feedbacks</h5>
+        <p class="text-muted small">Review feedback submitted by users and respond accordingly.</p>
+        <button class="btn btn-outline-danger mt-2 w-100" routerLink="/viewFeedbacks">View Feedbacks</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+  <!-- Customer Dashboard -->
+  <div *ngIf="isCustomer" class="row g-4 justify-content-center">
+
+    <!-- Card 1 -->
+    <div class="col-md-4">
+      <div class="card shadow h-100 text-center">
+        <div class="card-body d-flex flex-column">
+          <i class="bi bi-car-front-fill text-primary fs-2 mb-2"></i>
+          <h5 class="card-title">View & Book Cars</h5>
+          <p class="text-muted small flex-grow-1">Explore available cars and make your next reservation.</p>
+          <button class="btn btn-outline-primary mt-2 w-100" routerLink="/showCars">Book Now</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="col-md-4">
+      <div class="card shadow h-100 text-center">
+        <div class="card-body d-flex flex-column">
+          <i class="bi bi-clock-history text-success fs-2 mb-2"></i>
+          <h5 class="card-title">My Bookings</h5>
+          <p class="text-muted small flex-grow-1">View your upcoming and past reservations.</p>
+          <button class="btn btn-outline-success mt-2 w-100" routerLink="/history">View Bookings</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="col-md-4">
+      <div class="card shadow h-100 text-center">
+        <div class="card-body d-flex flex-column">
+          <i class="bi bi-chat-dots-fill text-secondary fs-2 mb-2"></i>
+          <h5 class="card-title">My Feedback</h5>
+          <p class="text-muted small flex-grow-1">View your submitted feedbacks and admin responses.</p>
+          <button class="btn btn-outline-secondary mt-2 w-100" routerLink="/myFeedback">View Feedback</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Agent Dashboard -->
+<div *ngIf="isAgent" class="row g-4 justify-content-center">
+
+  <!-- View Cars -->
+  <div class="col-md-5">
+    <div class="card shadow h-100 text-center">
+      <div class="card-body d-flex flex-column">
+        <i class="bi bi-car-front-fill text-primary fs-2 mb-2"></i>
+        <h5 class="card-title">View Cars</h5>
+        <p class="text-muted small flex-grow-1">Access car availability and details for verification.</p>
+        <button class="btn btn-outline-primary mt-2 w-100" routerLink="/showCars">View Cars</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Check-In/Check-Out -->
+  <div class="col-md-5">
+    <div class="card shadow h-100 text-center">
+      <div class="card-body d-flex flex-column">
+        <i class="bi bi-check2-square text-success fs-2 mb-2"></i>
+        <h5 class="card-title">Check-In / Check-Out</h5>
+        <p class="text-muted small flex-grow-1">Verify and update the status of reservations.</p>
+        <button class="btn btn-outline-success mt-2 w-100" routerLink="/check">Proceed</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+</div>

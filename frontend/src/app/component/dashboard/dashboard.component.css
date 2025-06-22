@@ -1,0 +1,26 @@
+.pointer {
+  cursor: pointer;
+}
+
+.nav-link {
+  color: #ffffff !important;
+  font-weight: 600;
+  padding: 8px 12px;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+  border-radius: 5px;
+}
+
+.nav-link:hover {
+  background-color: forestgreen;
+  color: #fff !important;
+  transform: scale(1.05);
+}
+
+.btn {
+  transition: 0.5s;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}

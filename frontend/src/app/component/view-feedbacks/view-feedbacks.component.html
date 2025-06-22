@@ -1,0 +1,37 @@
+<div class="container mt-4">
+  <h3 class="text-success mb-4">User Feedbacks</h3>
+
+  <div *ngIf="feedbackList.length === 0" class="alert alert-info">No feedbacks submitted yet.</div>
+
+  <div *ngFor="let fb of feedbackList" 
+       class="card mb-3 shadow-sm border-start-5" 
+  [ngClass]="{
+    'border-start-danger': fb.status === 'Pending',
+    'border-start-success': fb.status === 'Resolved'
+  }">
+
+    <div class="card-body">
+      <h5 class="card-title text-primary">
+        Reservation #{{ fb.reservationId }} | Car ID: {{ fb.carId }}
+      </h5>
+      
+
+      <p><strong>Customer ID:</strong> {{ fb.customerId }}</p>
+      <p><strong>Comment:</strong> {{ fb.comment }}</p>
+      <p><strong>Rating:</strong> {{ fb.rating }} / 5</p>
+
+      <!-- RESOLVED -->
+      <p *ngIf="fb.status === 'Resolved'" class="text-success">
+        <strong>Admin Response:</strong> {{ fb.adminResponse }}
+      </p>
+
+      <!-- PENDING: Admin Response Form -->
+      <div *ngIf="fb.status === 'Pending'">
+        <textarea class="form-control mb-2" [(ngModel)]="fb.tempResponse" rows="2"
+          placeholder="Write your response here..."></textarea>
+        <button class="btn btn-sm btn-primary"
+                (click)="submitAdminResponse(fb)">Send Response</button>
+      </div>
+    </div>
+  </div>
+</div>

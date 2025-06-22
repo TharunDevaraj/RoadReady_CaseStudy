@@ -1,0 +1,101 @@
+<div class="container mt-4">
+  <h2 class="text-center mb-4 text-success">Available Cars</h2>
+
+  <!-- Filter Section -->
+<div class="border p-4 mb-4 rounded shadow-sm bg-light">
+  <div class="d-flex align-items-center mb-3">
+    <i class="bi bi-funnel-fill text-primary fs-4 me-2"></i>
+    <h5 class="text-primary mb-0">Filter Cars</h5>
+  </div>
+
+  <div class="row row-cols-1 row-cols-md-4 g-3 ">
+    <!-- Location Filter -->
+    <div class="col">
+      <label for="location" class="form-label">Location</label>
+      <select id="location" class="form-select"
+        [(ngModel)]="customFilter.location"
+        name="location"
+        (change)="applyCustomFilter()">
+        <option value="">All</option>
+        <option *ngFor="let loc of locations" [value]="loc">{{ loc }}</option>
+      </select>
+    </div>
+
+    <!-- Passenger Capacity Filter -->
+    <div class="col">
+      <label for="passengerCapacity" class="form-label">Passenger Capacity</label>
+      <select id="passengerCapacity" class="form-select"
+        [(ngModel)]="customFilter.passengerCapacity"
+        name="passengerCapacity"
+        (change)="applyCustomFilter()">
+        <option value="">All</option>
+        <option *ngFor="let cap of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]" [value]="cap">{{ cap }}</option>
+      </select>
+    </div>
+
+    <!-- Sort By -->
+    <div class="col">
+      <label for="sortBy" class="form-label">Sort By</label>
+      <select id="sortBy" class="form-select"
+        [(ngModel)]="customFilter.sortBy"
+        name="sortBy"
+        (change)="applyCustomFilter()">
+        <option value="">None</option>
+        <option value="priceLowToHigh">Price: Low to High</option>
+        <option value="priceHighToLow">Price: High to Low</option>
+      </select>
+    </div>
+
+    <!-- Reset Button -->
+    <div class="col d-grid">
+      <button type="button" class="btn btn-warning"
+        (click)="onReset()">Reset Filters</button>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Car Cards Section -->
+  <div class="row" *ngIf="filteredCars.length > 0; else noCars">
+    <div class="col-md-4 mb-4" *ngFor="let car of filteredCars">
+      <div class="card shadow car-hover h-100">
+        <div class="card-header text-white"
+          [ngClass]="car.carStatus === 'Available' ? 'bg-success' : 'bg-secondary'">
+          Car Id: {{ car.carId }} &nbsp;&nbsp;&nbsp; {{ car.carStatus }}
+        </div>
+        <img [src]="car.carImageUrl"
+          class="card-img-top"
+          alt="Car Image"
+          style="height: 200px; object-fit: cover;">
+        <div class="card-body">
+          <h5 class="card-title">{{ car.carName }} ({{ car.year }})</h5>
+          <p class="card-text">
+            <strong>Location:</strong> {{ car.location }}<br />
+            <strong>Capacity:</strong> {{ car.passengerCapacity }}<br />
+            <strong>Price/Day:</strong> ₹{{ car.pricePerDay }}
+          </p>
+        </div>
+        <div class="card-footer d-flex flex-wrap justify-content-between">
+          <button class="btn"
+            [ngClass]="car.carStatus === 'Available' ? 'btn-primary' : 'btn-secondary'"
+            [disabled]="car.carStatus !== 'Available'"
+            (click)="reserveCar(car)">Reserve</button>
+
+          <div *ngIf="authService.isAdmin()">
+            <button class="btn btn-warning mr-2 mt-2"
+              (click)="navigateToUpdate(car.carId)">Update</button>
+            <button class="btn btn-danger mt-2"
+              (click)="deleteCar(car.carId)">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- No Cars Template -->
+  <ng-template #noCars>
+    <div class="alert alert-danger text-center fw-bold">
+      No cars found for the selected criteria.
+    </div>
+  </ng-template>
+</div>

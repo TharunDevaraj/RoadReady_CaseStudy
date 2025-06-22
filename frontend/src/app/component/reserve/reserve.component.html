@@ -1,0 +1,76 @@
+<div class="container mt-4">
+<h2 class="mb-4 text-center">Reservation Summary</h2>
+
+<div class="card mx-auto shadow w-75">
+<div class="card-body">
+
+<div class="row mb-2">
+<div class="col-sm-4 fw-bold">Car ID:</div>
+<div class="col-sm-8">{{ reservationDetails.carId }}</div>
+</div>
+
+<div class="row mb-2">
+ <div class="col-sm-4 fw-bold">Car Name:</div>
+   <div class="col-sm-8">{{reservationDetails.carName}}</div>
+</div>
+
+ <div class="row mb-2">
+ <div class="col-sm-4 fw-bold">Customer Name:</div>
+  <div class="col-sm-8">  {{reservationDetails.customerName}} </div>
+</div>
+
+<div class="row mb-2">
+  <div class="col-sm-4 fw-bold">Location:</div>
+ <div class="col-sm-8">{{reservationDetails.location}}</div>
+</div>
+
+  <div class="row mb-2">
+<div class="col-sm-4 fw-bold">Maximum Capacity:</div>
+   <div class="col-sm-8">{{ reservationDetails.passengerCapacity}}</div>
+</div>
+
+<div class="row mb-2">
+<div class="col-sm-4 fw-bold">Start Date:</div>
+ <div class="col-sm-8">
+<input type="date" class="form-control"
+[(ngModel)]="reservationDetails.startDate"
+name="startDate" [min]="minStartDate"
+(change)="calculateTotalAmount()" #startDate="ngModel">
+</div>
+</div>
+
+<div class="row mb-2">
+  <div class="col-sm-4 fw-bold">End Date:</div>
+    <div class="col-sm-8">
+<input type="date" class="form-control"
+[(ngModel)]="reservationDetails.endDate"
+name="endDate"
+[min]="reservationDetails.startDate"
+(change)="calculateTotalAmount()">
+</div>
+</div>
+
+ <div class="row mb-2">
+<div class="col-sm-4 fw-bold">Price/Day:</div>
+<div class="col-sm-8">₹{{reservationDetails.pricePerDay}}</div>
+</div>
+
+ <div class="row mb-2" *ngIf="!reservationDetails.startDate || !reservationDetails.endDate">
+<div class="col-sm-12 text-danger text-center">
+Please enter both start date and end date to display the total amount.
+</div>
+</div>
+
+<div class="row mb-3">
+<div class="col-sm-4 fw-bold">Total Amount:</div>
+<div class="col-sm-8 text-success fw-bold">₹{{reservationDetails.totalAmount}}</div>
+</div>
+
+<div class="text-center mt-3">
+   <button class="btn btn-secondary px-4 mr-2" (click)="goBack()">Go Back</button>
+   <button class="btn btn-success px-4" (click)="pay()">Pay</button>
+</div>
+
+</div>
+</div>
+</div>

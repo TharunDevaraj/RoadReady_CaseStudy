@@ -1,0 +1,27 @@
+<div class="container mt-5">
+  <h2 class="mb-4 text-success">Rental Report</h2>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+
+  <div class="card p-4 shadow mb-4">
+    <h4>Total Revenue:</h4>
+    <p class="fs-4 text-primary">₹ {{ totalRevenue | number:'1.2-2' }}</p>
+
+    <h4>Total Reservations:</h4>
+    <p class="fs-4 text-primary">{{ totalReservations }}</p>
+  </div>
+
+  <div class="card p-4 shadow">
+    <h4>Total Cars:</h4>
+    <p class="fs-5 fw-semibold">{{ totalCars }}</p>
+
+    <h5 class="text-muted">Available Cars:</h5>
+    <p class="text-success">{{ availableCars }}</p>
+
+    <h5 class="text-muted">Rented Cars:</h5>
+    <p class="text-warning">{{ rentedCars }}</p>
+
+    <h5 class="text-muted">Cars Under Maintenance:</h5>
+    <p class="text-danger">{{ maintenanceCars }}</p>
+  </div>
+</div>

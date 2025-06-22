@@ -1,0 +1,39 @@
+<div class="container mt-4">
+<h2 class="text-center mb-4 text-success">Registered Users</h2>
+
+ <div class="row justify-content-center mb-3">
+  <div class="col-md-6">
+    <input type="text" class="form-control" placeholder="Search by username..." [(ngModel)]="searchTerm"
+    (input)="filterUsers()" />
+  </div>
+ </div>
+
+<div class="row mt-2" *ngIf="filteredUsers.length > 0; else noUsers">
+ <div class="col-md-4 mb-4" *ngFor="let user of filteredUsers">
+  <div class="card shadow">
+    <div class="card-header text-white"
+         [ngClass]="user.roles === 'INACTIVE' ? 'bg-secondary' : 'bg-success'">
+      User ID: {{ user.userId }}
+    </div>
+     <div class="card-body">
+       <p class="card-text">
+         <strong>User Name:</strong> {{ user.userName }}
+       </p>
+   <p class="card-text"><strong>Email:</strong> {{ user.email }}</p>
+      <p class="card-text"><strong>Role:</strong> {{ user.roles }}</p>
+<p class="card-text">
+  <strong>Phone:</strong> {{ user.phoneNumber }}
+</p>
+       <button class="btn btn-danger mt-2"
+        [disabled]="user.roles === 'INACTIVE'"
+        (click)="deactivateUser(user.userId)">
+         Deactivate
+       </button>
+     </div>
+  </div>
+ </div>
+</div>
+
+<ng-template #noUsers>
+   <div class="alert alert-warning text-center fw-bold">No users found.</div>
+</ng-template>

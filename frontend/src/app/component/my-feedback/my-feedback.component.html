@@ -1,0 +1,18 @@
+<!-- src/app/component/my-feedback/my-feedback.component.html -->
+<div class="container mt-5">
+  <h3 class="text-success mb-4">My Submitted Feedback</h3>
+
+  <div *ngIf="feedbackList.length === 0" class="alert alert-info">
+    You haven't submitted any feedback yet.
+  </div>
+
+  <div *ngFor="let fb of feedbackList" class="card mb-3 shadow-sm">
+    <div class="card-body">
+      <h5 class="card-title">Reservation #{{ fb.reservationId }} | Car ID: {{ fb.carId }}</h5>
+      <p><strong>Your Comment:</strong> {{ fb.comment }}</p>
+      <p><strong>Your Rating:</strong> {{ fb.rating }}</p>
+      <p *ngIf="fb.status==='Resolved'"><strong>Admin Response:</strong> {{ fb.adminResponse }}</p>
+      <p *ngIf="fb.status==='Pending'" class="text-muted"><em>Awaiting response from admin.</em></p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+2025-06-22T11:26:30.824+05:30  INFO 4036 --- [Vehicle-Service] [main] c.h.v.VehicleServiceApplication          : Starting VehicleServiceApplication using Java 21.0.6 with PID 4036 (C:\Users\Tharun\Desktop\Hexaware\Java_Angular_Hexaware\CaseStudy\Vehicle-Service\target\classes started by Tharun in C:\Users\Tharun\Desktop\Hexaware\Java_Angular_Hexaware\CaseStudy\Vehicle-Service)
+2025-06-22T11:26:30.829+05:30 DEBUG 4036 --- [Vehicle-Service] [main] c.h.v.VehicleServiceApplication          : Running with Spring Boot v3.5.0, Spring v6.2.7
+2025-06-22T11:26:30.830+05:30  INFO 4036 --- [Vehicle-Service] [main] c.h.v.VehicleServiceApplication          : No active profile set, falling back to 1 default profile: "default"
+2025-06-22T11:26:33.916+05:30  INFO 4036 --- [Vehicle-Service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-22T11:26:33.970+05:30  INFO 4036 --- [Vehicle-Service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 43 ms. Found 1 JPA repository interface.
+2025-06-22T11:26:34.425+05:30  INFO 4036 --- [Vehicle-Service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8181 (http)
+2025-06-22T11:26:34.439+05:30  INFO 4036 --- [Vehicle-Service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-06-22T11:26:34.440+05:30  INFO 4036 --- [Vehicle-Service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-06-22T11:26:34.503+05:30  INFO 4036 --- [Vehicle-Service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-06-22T11:26:34.504+05:30  INFO 4036 --- [Vehicle-Service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3621 ms
+2025-06-22T11:26:34.670+05:30  INFO 4036 --- [Vehicle-Service] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-06-22T11:26:34.729+05:30  INFO 4036 --- [Vehicle-Service] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.15.Final
+2025-06-22T11:26:34.771+05:30  INFO 4036 --- [Vehicle-Service] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-06-22T11:26:35.067+05:30  INFO 4036 --- [Vehicle-Service] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-06-22T11:26:35.096+05:30  INFO 4036 --- [Vehicle-Service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-06-22T11:26:35.842+05:30  INFO 4036 --- [Vehicle-Service] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@44a14de0
+2025-06-22T11:26:35.847+05:30  INFO 4036 --- [Vehicle-Service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-06-22T11:26:36.270+05:30  WARN 4036 --- [Vehicle-Service] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-06-22T11:26:36.287+05:30  INFO 4036 --- [Vehicle-Service] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.41
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-06-22T11:26:37.046+05:30  INFO 4036 --- [Vehicle-Service] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-06-22T11:26:37.412+05:30  INFO 4036 --- [Vehicle-Service] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-06-22T11:26:37.687+05:30  INFO 4036 --- [Vehicle-Service] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-06-22T11:26:38.366+05:30  WARN 4036 --- [Vehicle-Service] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-06-22T11:26:38.838+05:30  INFO 4036 --- [Vehicle-Service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8181 (http) with context path '/'
+2025-06-22T11:26:38.848+05:30  INFO 4036 --- [Vehicle-Service] [main] c.h.v.VehicleServiceApplication          : Started VehicleServiceApplication in 8.935 seconds (process running for 10.764)
+2025-06-22T11:28:37.182+05:30  INFO 4036 --- [Vehicle-Service] [http-nio-8181-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-06-22T11:28:37.182+05:30  INFO 4036 --- [Vehicle-Service] [http-nio-8181-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-06-22T11:28:37.184+05:30  INFO 4036 --- [Vehicle-Service] [http-nio-8181-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-06-22T11:41:19.128+05:30  INFO 4036 --- [Vehicle-Service] [http-nio-8181-exec-3] c.h.v.service.CarServiceImp              : Updating status of car with cardId 20002
+2025-06-22T11:41:20.843+05:30 DEBUG 4036 --- [Vehicle-Service] [http-nio-8181-exec-3] c.h.v.service.CarServiceImp              : Updated status of car with cardId 20002
+2025-06-22T11:46:59.025+05:30  INFO 4036 --- [Vehicle-Service] [http-nio-8181-exec-5] c.h.v.service.CarServiceImp              : Updating status of car with cardId 20001
+2025-06-22T11:46:59.106+05:30 DEBUG 4036 --- [Vehicle-Service] [http-nio-8181-exec-5] c.h.v.service.CarServiceImp              : Updated status of car with cardId 20001
+2025-06-22T11:51:52.805+05:30  INFO 4036 --- [Vehicle-Service] [RMI TCP Connection(29)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2025-06-22T11:51:52.993+05:30  INFO 4036 --- [Vehicle-Service] [RMI TCP Connection(29)-127.0.0.1] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-06-22T11:51:53.020+05:30  INFO 4036 --- [Vehicle-Service] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-06-22T11:51:53.108+05:30  INFO 4036 --- [Vehicle-Service] [RMI TCP Connection(29)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-06-22T11:51:53.111+05:30  INFO 4036 --- [Vehicle-Service] [RMI TCP Connection(29)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-06-22T11:51:53.136+05:30  INFO 4036 --- [Vehicle-Service] [RMI TCP Connection(29)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

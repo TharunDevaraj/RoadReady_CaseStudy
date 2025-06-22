@@ -1,0 +1,101 @@
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Payment Page</h2>
+
+  <form #paymentForm="ngForm" class="card mx-auto shadow w-50">
+    <div class="card-body">
+
+      <!-- Payment Type -->
+      <div class="mb-3">
+        <label for="paymentType" class="form-label">Payment Type</label>
+        <select id="paymentType" class="form-select"
+                [(ngModel)]="paymentType"
+                name="paymentType"
+                required
+                #type="ngModel">
+          <option value="" disabled selected>Select payment method</option>
+          <option value="UPI">UPI</option>
+          <option value="Credit Card">Credit Card</option>
+          <option value="Debit Card">Debit Card</option>
+        </select>
+        <div class="text-danger" *ngIf="type.invalid && type.touched">
+          Payment type is required.
+        </div>
+      </div>
+
+      <!-- UPI ID -->
+      <div class="mb-3" *ngIf="paymentType === 'UPI'">
+        <label class="form-label">UPI ID</label>
+        <input type="text" class="form-control"
+               [(ngModel)]="upiId"
+               name="upiId"
+               required
+               #upi="ngModel">
+        <div class="text-danger" *ngIf="upi.invalid && upi.touched">
+          UPI ID is required.
+        </div>
+      </div>
+
+      <!-- Card Details -->
+      <div *ngIf="paymentType === 'Credit Card' || paymentType === 'Debit Card'">
+
+        <!-- Card Number -->
+        <div class="mb-3">
+          <label class="form-label">Card Number</label>
+          <input type="text" class="form-control"
+                 [(ngModel)]="cardNumber"
+                 name="cardNumber"
+                 minlength="16"
+                 maxlength="16"
+                 required
+                 #card="ngModel">
+          <div class="text-danger" *ngIf="card.invalid && card.touched">
+            Card number must be 16 digits.
+          </div>
+        </div>
+
+        <!-- Expiry Date -->
+        <div class="mb-3">
+          <label class="form-label">Expiry Date</label>
+          <input type="month" class="form-control"
+                 [(ngModel)]="expiryDate"
+                 name="expiryDate"
+                 required
+                 #exp="ngModel">
+          <div class="text-danger" *ngIf="exp.invalid && exp.touched">
+            Expiry date is required.
+          </div>
+        </div>
+
+        <!-- CVV -->
+        <div class="mb-3">
+          <label class="form-label">CVV</label>
+          <input type="text" class="form-control"
+                 [(ngModel)]="cvv"
+                 name="cvv"
+                 maxlength="3"
+                 minlength="3"
+                 required
+                 #cvvField="ngModel">
+          <div class="text-danger" *ngIf="cvvField.invalid && cvvField.touched">
+            CVV must be 3 digits.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Total Amount -->
+      <div class="mb-3">
+        <label class="form-label fw-bold">Total Amount:</label>
+        <div class="text-success fs-5">₹{{ totalAmount }}</div>
+      </div>
+
+      <!-- Submit -->
+      <div class="text-center">
+        <button class="btn btn-success"
+                [disabled]="paymentForm.invalid"
+                (click)="makePayment()">Make Payment</button>
+      </div>
+
+    </div>
+  </form>
+</div>
