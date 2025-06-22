@@ -70,7 +70,7 @@ docker compose up --build
 
 ### Access Points
 
-  If you want to enter as admin, use "RR_ADMIN" as asmin secret key
+  If you want to enter as admin, use "RR_ADMIN" as admin secret key
 
 - Frontend: http://localhost:4200
 - User Service: http://localhost:8080
