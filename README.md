@@ -65,7 +65,7 @@ casestudy/
 ### Start the Application
 
 ```bash
-docker-compose up --build
+docker compose up --build
 ```
 
 ### Access Points
